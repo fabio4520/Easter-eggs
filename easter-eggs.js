@@ -15,6 +15,7 @@ function Loader() {
 }
 
 function Clock() {
+  console.log("dentro clock")
   let timerIdClock = setInterval(()=> {
     let today = new Date();
     let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
@@ -34,5 +35,20 @@ function numberFormatter() {
   if ( number > limit**2) return (number/limit**2)%1 == 0? parseInt(number/limit**2) + array[2]:(number/limit**2).toFixed(2) + array[2]  ;
 }
 
-function EasterEgg() {
+async function EasterEgg(name, ...args) {
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  this.execute;
+  switch (name) {
+    case 'clock':
+      Loader();
+      // await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 sec
+      await delay(3000);
+      this.execute = new Clock();
+      this.execute();
+      break;
+    case 'marquee':
+      console.log("marquee")
+      break;
+  }
+  
 }
