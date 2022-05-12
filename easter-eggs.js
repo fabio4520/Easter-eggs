@@ -15,6 +15,17 @@ function Loader() {
 }
 
 function Clock() {
+  let timerIdClock = setInterval(()=> {
+    let today = new Date();
+    let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+    console.clear();
+    console.log(time);
+  },100);
+  document.addEventListener('click', () => {
+    setTimeout(() => { clearInterval(timerIdClock); },0);
+    console.clear();
+    console.log("Let's keep playing")
+  });
 }
 
 function numberFormatter() {
