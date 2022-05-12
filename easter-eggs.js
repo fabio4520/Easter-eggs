@@ -29,6 +29,9 @@ function Clock() {
 }
 
 function numberFormatter() {
+  if (number <= limit) return number + array[0];
+  if ( number > limit && number <= limit**2 ) return parseInt(number/limit) + array[1];
+  if ( number > limit**2) return (number/limit**2)%1 == 0? parseInt(number/limit**2) + array[2]:(number/limit**2).toFixed(2) + array[2]  ;
 }
 
 function EasterEgg() {
