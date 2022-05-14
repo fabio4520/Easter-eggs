@@ -1,9 +1,4 @@
 function Markee(sentence, number) {
-  // while (number > 0) {
-  //   console.clear();
-  //   console.log(" ".repeat(number) + sentence);
-  //   number--;
-  // }
   let number_copy = number // solo es para validar la longitud del number + sentence.lengt
   // el problema está en que cuando hacemos shift(), el other_arr almacena valores undefined
   // descomentar las líneas 20,21,22
