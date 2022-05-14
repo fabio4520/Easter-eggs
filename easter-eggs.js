@@ -48,7 +48,8 @@ function errorTic(row, column) {
   else if (row > table.length || column > table.length) return true;
 }
 
-function Loader() {
+function Loader(callback, ...arguments) {
+  this.local ;
   array = ["|", "/", "-",  "\\'"];
   i = 0;
   let timerId = setInterval(()=> {
@@ -58,7 +59,11 @@ function Loader() {
     i++;
     
   },300);
-  setTimeout(() => { clearInterval(timerId); }, 3000);
+  setTimeout(() => { 
+    clearInterval(timerId); 
+    console.clear();
+    this.local = callback(...arguments);
+  }, 3000);
 }
 
 function Clock() {
@@ -86,8 +91,11 @@ function EasterEgg(name, ...args) {
   const delay = ms => new Promise(res => setTimeout(res, ms));
   this.execute;
   let counter = 1;
+  if (name == 'number formatter') Loader(numberFormatter); 
+  if (name == "clock") Loader(Clock);
+  if (name == "marquee")  Loader(Markee,args[0], args[1] ); 
+ 
   this.snippet = function(...argument){
-   // Loader();
     if (name == 'number formatter'){
      // await delay(3000);
       return numberFormatter(argument[0], args[0], args[1]);
@@ -115,30 +123,19 @@ function EasterEgg(name, ...args) {
           counter++;
         };
         if (validate) {
-          console.log("You win mtf");
+          console.log("{winner} has won!!!");
           table = [["", "", ""], ["", "", ""], ["", "", ""]];
           console.clear();
         }
       }
+    }
   }
-
-  if (name == "clock") {
-    this.execute = new Clock();
-    this.execute();
-  }
-
-  }
-  // switch (name) {
-  //   case 'clock':
-  //     Loader();
-  //     // await new Promise((resolve) => setTimeout(resolve, 3000)); // 3 sec
-  //     //await delay(3000);
-  //     this.execute = new Clock();
-  //     this.execute();
-  //     break;
-  //   case 'marquee':
-  //     console.log("marquee")
-  //     break;
+  // if (name == "clock") {
+  //   this.execute = new Clock();
+  //   this.execute();
   // }
-  
+  // if (name == "marquee") {
+  //   this.execute = new Markee(args[0], args[1]);
+  //   this.execute();
+  // }  
 }
