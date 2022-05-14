@@ -1,3 +1,25 @@
+function Markee(sentence, number) {
+  let number_copy = number // solo es para validar la longitud del number + sentence.lengt
+  // el problema está en que cuando hacemos shift(), el other_arr almacena valores undefined
+  // descomentar las líneas 20,21,22
+  let i = 0;
+  let arr = sentence.split("");
+  let other_arr = [];
+  let timerIdMarkee = setInterval(() => {
+    console.clear();
+    other_arr.push(arr[i])
+    console.log( " ".repeat(number) + other_arr.join(""));
+    if (number != 0) number--;
+    i++;
+    if (number == 0) { other_arr.shift() };
+    // console.log(other_arr);
+    // console.log(other_arr.length);
+    // console.log(i);
+    if (i == (number_copy + sentence.length)) clearInterval(timerIdMarkee);
+  }, 100);
+}
+
+
 table = [["", "", ""], ["", "", ""], ["", "", ""]];
 
 function TicTacToe(row, column, value) {
